@@ -1,6 +1,8 @@
 'use strict';
 
 var path = process.cwd();
+var bodyParser = require('body-parser');
+var Poll = require('../models/polls');
 
 module.exports = function (app, passport) {
 
@@ -16,6 +18,7 @@ module.exports = function (app, passport) {
     
 
 app.set('view engine', 'ejs');
+
 
 app.route('/')
     .get(function (req, res) {
@@ -38,6 +41,31 @@ app.route('/')
     .get(isLoggedIn, function (req, res) {
         res.sendFile(path + '/public/profile.html');
     });
+    
+    app.route('/newpoll')
+    .get(isLoggedIn, function (req, res) {
+        res.sendFile(path + '/public/newpoll.html');
+    });
+    
+    app.route('/createpoll')
+    .get(isLoggedIn, function (req, res) {
+        var name = req.query.name;
+        var options = req.query.options.split('\n');
+        var newPoll = Poll();
+        newPoll.name = name;
+        newPoll.options = options
+        var votes = Array.apply(null, Array(options.length)).map(Number.prototype.valueOf,0);
+        newPoll.votes = votes;
+        newPoll.save(function (err) {
+            if (err) {
+                throw err;
+            }
+            res.send(req.body)
+        });
+    });
+    
+    //app.route('/poll/:id')
+    //Display the poll!
     
     app.route('/api/:id')
     .get(isLoggedIn, function (req, res) {

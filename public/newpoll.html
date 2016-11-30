@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+			<title>VotePoll</title>
+		
+		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<body>
+	<nav>
+    <div class="nav-wrapper green">
+      <a href="#" class="brand-logo left">VotePoll</a>
+      <ul id="nav-mobile" class="right">
+        <li><a href="/" class="login-btn">Home</a></li>
+        <li><a href="/newpoll" class="login-btn">Create a Poll!</a></li>
+        <li><a href="/logout" class="login-btn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+  <div class="container center google-profile">
+      
+  	<h2>Create a New Poll</h2>
+  	<p>What will you call your new poll,  <span id="display-name" class="profile-value"></span>?</p>
+  	<div class="row">
+    <form class="col s12">
+      <div class="row white-text">
+        <div class="input-field col s12 m6 l8 offset-l2 offset-m3">
+          <input id="poll_name" type="text" name="name">
+          <label for="poll_name">Poll Name</label>
+        </div>
+      </div>
+      <span>Now please add options for your poll, with each option separated by a newline:</span>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="options" class="materialize-textarea" name="options"></textarea>
+          <label for="options">Options</label>
+        </div>
+      </div>
+      <button class="waves-effect waves-light btn-large white green-text" id="submit">Create!</button>
+    </form> 
+  	</div>
+  	</main>
+  	 <footer class="white red-text footer-copyright center">
+      Made by <a href="http://www.hamishivison.com">Hamish Ivison</a>
+        </footer>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+      <script type="text/javascript" src="public/js/materialize.min.js"></script>
+      <script type="text/javascript" src="public/js/main.js"></script>
+       <script type="text/javascript" src="public/js/newpoll.js"></script>
+      <script type="text/javascript" src="common/ajax-functions.js"></script>
+        <script type="text/javascript" src="controllers/userController.client.js"></script>
+  	</body>
+</html>
