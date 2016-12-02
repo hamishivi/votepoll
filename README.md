@@ -1,3 +1,3 @@
 *VOTEPOLL*
 
-A freecodecamp assignment. Still in progress!
+A freecodecamp assignment. Create and vote on polls, using Google authentication!
