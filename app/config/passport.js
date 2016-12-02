@@ -24,7 +24,7 @@ module.exports = function (passport) {
     //then edit your /etc/hosts local file to point on your private IP. 
     //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
     //if you use it.
-    callbackURL: "https://authentication-test-2-hamishivi.c9users.io/auth/google/callback",
+    callbackURL: "https://votepolling.herokuapp.com/auth/google/callback",
     passReqToCallback   : true
   },
     function (request, accessToken, refreshToken, profile, done) {

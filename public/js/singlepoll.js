@@ -22,6 +22,6 @@ $("#voter").click(function() {
     } else {
      curVote = $( "#vote option:selected" ).text().replace(/\r/g, "");
     } 
-    window.location.href = 'https://authentication-test-2-hamishivi.c9users.io/addvote?url=' + $("#hash").text() + "&vote=" + curVote;
+    window.location.href = 'https://votepolling.herokuapp.com/addvote?url=' + $("#hash").text() + "&vote=" + curVote;
 
 });

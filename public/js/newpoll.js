@@ -1,10 +1,7 @@
 $('#create').click( function() {
     var name = $("#poll_name").val();
-    //var opts =$("#options").val().replace('/\r/g', ',');
-    //console.log(opts);
-    //window.location.href = 'https://authentication-test-2-hamishivi.c9users.io/createpoll?name='+name+'&options='+opts;
-    $.get( 'https://authentication-test-2-hamishivi.c9users.io/createpoll', $('form').serialize(), function(data) {
-       window.location.href = 'https://authentication-test-2-hamishivi.c9users.io/poll/' + name.hashCode();
+    $.get( 'https://votepolling.herokuapp.com/createpoll', $('form').serialize(), function(data) {
+       window.location.href = 'https://votepolling.herokuapp.com/poll/' + name.hashCode();
     });
     //redirect after created poll
     //window.location = "http://www.yoururl.com";
