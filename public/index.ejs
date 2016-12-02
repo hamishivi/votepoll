@@ -14,16 +14,28 @@
 <body>
 	<nav>
     <div class="nav-wrapper green">
-      <a href="#" class="brand-logo left">VotePoll</a>
-      <ul id="nav-mobile" class="right">
+      <a href="/" class="brand-logo">VotePoll</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if (!login) { %>
 			    <li><a href="login" class="login-btn">Login</a></li>
 		    <% } else { %>
 			    <li><a href="/" class="login-btn">Home</a></li>
+			    <li><a href="/profile" class="login-btn">Profile</a></li>
           <li><a href="/newpoll" class="login-btn">Create a Poll!</a></li>
           <li><a href="/logout" class="login-btn">Logout</a></li>
 		<% } %>
         
+      </ul>
+       <ul class="side-nav right" id="mobile-demo">
+         <% if (!login) { %>
+			    <li><a href="login" class="login-btn">Login</a></li>
+		    <% } else { %>
+			    <li><a href="/" class="login-btn">Home</a></li>
+			    <li><a href="/profile" class="login-btn">Profile</a></li>
+          <li><a href="/newpoll" class="login-btn">Create a Poll!</a></li>
+          <li><a href="/logout" class="login-btn">Logout</a></li>
+          <% } %>
       </ul>
     </div>
   </nav>
@@ -39,10 +51,9 @@
   	</div>
   	<h3>Some recent polls....</h3>
   	<div class="collection">
-        <a href="#!" class="collection-item green-text">What to eat?</a>
-        <a href="#!" class="collection-item green-text">Favourite Philosopher</a>
-        <a href="#!" class="collection-item green-text">Where to go?</a>
-        <a href="#!" class="collection-item green-text">What is the meaning of life?</a>
+       <% for (var i =0; i < polls.length; i++) { %>
+  	    <a href='../poll/<%= polls[i].url %>' class="collection-item green-text"><%= polls[i].name %></a>
+      <% } %>
       </div>
   	</div>
   	</main>

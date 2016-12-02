@@ -1,3 +1,5 @@
+ $(".button-collapse").sideNav();
+
 var ctx = document.getElementById("myChart");
 Chart.defaults.global.defaultFontColor = '#FFF';
 var data = {

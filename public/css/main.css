@@ -58,3 +58,27 @@ main {
    	 border-bottom: 1px solid #FFF !important;
      box-shadow: 0 1px 0 0 #FFF !important;
    }
+
+#left {
+    float:left;
+}
+
+#right{
+    float:right;
+    width:70%;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 750px){
+    #right{
+        float:none;
+        width:100%;
+        overflow: hidden;
+    }
+    
+    #left {
+       float:none;
+        width:100%;
+        overflow: hidden; 
+    }
+}

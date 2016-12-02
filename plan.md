@@ -10,6 +10,5 @@ user:{username, poll-names:{}, google profile image?)
 poll:{name, votes:{name1:10, name2:3, etc}}
 
 TODO:
-/newpoll and polling datastructures
-/:poll-name - ie general page for displaying poll(will need ejs so authenticated can add option)
-setup mlabs
+
+setup heroku
