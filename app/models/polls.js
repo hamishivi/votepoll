@@ -8,6 +8,6 @@ var Poll = new Schema({
     votes: [],
     creator: String,
     url: String
-    });
+});
 
 module.exports = mongoose.model('Poll', Poll);

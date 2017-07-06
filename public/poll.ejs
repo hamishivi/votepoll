@@ -1,129 +1,127 @@
 <!DOCTYPE html>
-
 <html>
 
-	<head>
-			<title>VotePoll</title>
-		
-		<link href="../public/css/main.css" rel="stylesheet" type="text/css">
-		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
-      <link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+<head>
+    <title>VotePoll</title>
+    <link href="../public/css/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css" media="screen,projection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
 <body>
-<nav>
-    <div class="nav-wrapper green">
-      <a href="../" class="brand-logo">VotePoll</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if (!login) { %>
-			    <li><a href="../login" class="login-btn">Login</a></li>
-		    <% } else { %>
-			    <li><a href="../" class="login-btn">Home</a></li>
-			    <li><a href="../profile" class="login-btn">Profile</a></li>
-          <li><a href="../newpoll" class="login-btn">Create a Poll!</a></li>
-          <li><a href="../logout" class="login-btn">Logout</a></li>
-		<% } %>
-        
-      </ul>
-       <ul class="side-nav right" id="mobile-demo">
-         <% if (!login) { %>
-			    <li><a href="../login" class="login-btn">Login</a></li>
-		    <% } else { %>
-			    <li><a href="../" class="login-btn">Home</a></li>
-			    <li><a href="../profile" class="login-btn">Profile</a></li>
-          <li><a href="../newpoll" class="login-btn">Create a Poll!</a></li>
-          <li><a href="../logout" class="login-btn">Logout</a></li>
-          <% } %>
-      </ul>
-    </div>
-  </nav>
-  <main>
-      
-  <div class="container center">
-      <h2><%= name  %></h2>
-      <span id="hash" style="display:none"><%= hashbrown %></span>
-      <div id="right">
-      <canvas id="poll" class="large" width="600" height="600"></canvas>
-      <br>
-      <br>
-      </div>
-      <script>
-      var ctx = document.getElementById("poll");
-Chart.defaults.global.defaultFontColor = '#FFF';
-var options = '<%= options  %>'.split(',');
-var data = {
-    labels: options,
-    datasets: [
-        {
-            data: [<%= votes  %>],
-            backgroundColor: '<%= colors  %>'.split(','),
-            hoverBackgroundColor: '<%= colors  %>'.split(',')
-        }]
-};
-var myPieChart = new Chart(ctx,{
-    type: 'pie',
-    data: data,
-    options: {title: {
-            display: true,
-            text: '<%=name  %>'
-        },
-    animation:{
-        animateScale:true
-    }}
-});
-</script>
-  	<div id="left">
-  	    
-  	<div class="input-field col s12">
-    <select id="vote">
-      <option value="" disabled selected>Vote here</option>
-        <% for(var i=0; i<options.length; i++) {%>
-       <option value='<%= options[i] %>'><%= options[i] %></option>
-       <% } %>
-       <% if (login) { %>
-       <option value="-1">None of these- I want a custom option</option>
-		    <% } %>
-    </select>
-    <label>Vote Options</label>
-    </div>
-    <div class="row white-text" id="custom" style="display:none">
-        <div class="input-field col s12 m6 l8 offset-l2 offset-m3">
-          <input id="poll_name" type="text" name="name">
-          <label for="poll_name">New Option</label>
+    <nav>
+        <div class="nav-wrapper green">
+            <a href="../" class="brand-logo">VotePoll</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <% if (!login) { %>
+                    <li><a href="../login" class="login-btn">Login</a></li>
+                    <% } else { %>
+                        <li><a href="../" class="login-btn">Home</a></li>
+                        <li><a href="../profile" class="login-btn">Profile</a></li>
+                        <li><a href="../newpoll" class="login-btn">Create a Poll!</a></li>
+                        <li><a href="../logout" class="login-btn">Logout</a></li>
+                        <% } %>
+            </ul>
+            <ul class="side-nav right" id="mobile-demo">
+                <% if (!login) { %>
+                    <li><a href="../login" class="login-btn">Login</a></li>
+                    <% } else { %>
+                        <li><a href="../" class="login-btn">Home</a></li>
+                        <li><a href="../profile" class="login-btn">Profile</a></li>
+                        <li><a href="../newpoll" class="login-btn">Create a Poll!</a></li>
+                        <li><a href="../logout" class="login-btn">Logout</a></li>
+                        <% } %>
+            </ul>
         </div>
-      </div>
-    <a class="waves-effect waves-light btn" id="voter">Vote!</a>
-    <br>
-    <br>
-     <% if (user) { %>
-	    <a href=<%= "delete/" + hashbrown %> class="waves-effect waves-light btn red" id="voter">Delete this poll!</a>
-	 <% }  %>
-	 <% if (login) { %>
-	 <br><br>
-	     <script language="javascript">
-    function tweetCurrentPage()
-    { window.open("https://twitter.com/share?text=vote%20on%20this!&url="+escape(window.location.href), '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false; }
-</script>
+    </nav>
+    <main>
+        <div class="container center">
+            <h2><%= name  %></h2>
+            <span id="hash" style="display:none"><%= hashbrown %></span>
+            <div id="right">
+                <canvas id="poll" class="large" width="600" height="600"></canvas>
+                <br>
+                <br>
+            </div>
+            <script>
+                var ctx = document.getElementById("poll");
+                Chart.defaults.global.defaultFontColor = '#FFF';
+                var options = '<%= options  %>'.split(',');
+                var data = {
+                    labels: options,
+                    datasets: [{
+                        data: [<%= votes  %>],
+                        backgroundColor: '<%= colors  %>'.split(','),
+                        hoverBackgroundColor: '<%= colors  %>'.split(',')
+                    }]
+                };
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: data,
+                    options: {
+                        title: {
+                            display: true,
+                            text: '<%=name  %>'
+                        },
+                        animation: {
+                            animateScale: true
+                        }
+                    }
+                });
+            </script>
+            <div id="left">
+                <div class="input-field col s12">
+                    <select id="vote">
+              <option value="" disabled selected>Vote here</option>
+              <% for(var i=0; i<options.length; i++) {%>
+                <option value='<%= options[i] %>'><%= options[i] %></option>
+              <% } %>
+              <% if (login) { %>
+                <option value="-1">None of these- I want a custom option</option>
+		      <% } %>
+            </select>
+                    <label>Vote Options</label>
+                </div>
+                <div class="row white-text" id="custom" style="display:none">
+                    <div class="input-field col s12 m6 l8 offset-l2 offset-m3">
+                        <input id="poll_name" type="text" name="name">
+                        <label for="poll_name">New Option</label>
+                    </div>
+                </div>
+                <a class="waves-effect waves-light btn" id="voter">Vote!</a>
+                <br>
+                <br>
+                <% if (user) { %>
+                    <a href=<%="delete/" + hashbrown %> class="waves-effect waves-light btn red" id="voter">Delete this poll!</a>
+                    <% }  %>
+                        <% if (login) { %>
+                            <br><br>
+                            <script language="javascript">
+                                function tweetCurrentPage() {
+                                    window.open("https://twitter.com/share?text=vote%20on%20this!&url=" + escape(window.location.href),
+                                        '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+                                    return false;
+                                }
+                            </script>
+                            <a class="tweet blue btn white-text" href="javascript:tweetCurrentPage()" target="_blank" alt="Tweet this page">Tweet it!</a>
+                            <% } %>
+                                <br>
+                                <br>
+            </div>
+        </div>
+    </main>
+    <footer class="white red-text footer-copyright center">
+        Made by <a href="http://www.hamishivison.com">Hamish Ivison</a>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../public/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../common/ajax-functions.js"></script>
+    <script type="text/javascript" src="../controllers/userController.client.js"></script>
+    <script type="text/javascript" src="../public/js/singlepoll.js"></script>
+</body>
 
-<a class="tweet blue btn white-text" href="javascript:tweetCurrentPage()" target="_blank" alt="Tweet this page">Tweet it!</a>
-
-	     <% } %>
-	 <br>
-	 <br>
-  	</div>
-  	</div>
-  	</main>
-  	 <footer class="white red-text footer-copyright center">
-      Made by <a href="http://www.hamishivison.com">Hamish Ivison</a>
-        </footer>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../public/js/materialize.min.js"></script>
-      <script type="text/javascript" src="../common/ajax-functions.js"></script>
-        <script type="text/javascript" src="../controllers/userController.client.js"></script>
-        <script type="text/javascript" src="../public/js/singlepoll.js"></script>
-  	</body>
 </html>

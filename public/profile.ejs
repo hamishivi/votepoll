@@ -1,58 +1,52 @@
 <!DOCTYPE html>
-
 <html>
-
 	<head>
-			<title>VotePoll</title>
-		
+		<title>VotePoll</title>
 		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
-		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-<body>
-	<nav>
-    <div class="nav-wrapper green">
-      <a href="/" class="brand-logo">VotePoll</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="public/css/materialize.min.css"  media="screen,projection"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+	  <nav>
+      <div class="nav-wrapper green">
+        <a href="/" class="brand-logo">VotePoll</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
 			    <li><a href="/" class="login-btn">Home</a></li>
 			    <li><a href="/profile" class="login-btn">Profile</a></li>
           <li><a href="/newpoll" class="login-btn">Create a Poll!</a></li>
           <li><a href="/logout" class="login-btn">Logout</a></li>
-        
-      </ul>
-       <ul class="side-nav right" id="mobile-demo">
+        </ul>
+        <ul class="side-nav right" id="mobile-demo">
 			    <li><a href="/" class="login-btn">Home</a></li>
 			    <li><a href="/profile" class="login-btn">Profile</a></li>
           <li><a href="/newpoll" class="login-btn">Create a Poll!</a></li>
           <li><a href="/logout" class="login-btn">Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-  <main>
-  <div class="container center google-profile">
-      
-  	<h2>Welcome, <span id="display-name" class="profile-value"></span>!</h2>
-  	<p>Email: <span id="profile-email" class="profile-value"></span></p>
-  	<p>Below is a list of all your polls, with links to each one!</p>
-  	<div class="collection" id="userpolls">
-  	  <% for (var i =0; i < polls.length; i++) { %>
-  	    <a href='../poll/<%= polls[i].url %>' class="collection-item green-text"><%= polls[i].name %></a>
-      <% } %>
+        </ul>
       </div>
-  	</div>
+    </nav>
+    <main>
+      <div class="container center google-profile">
+  	    <h2>Welcome, <span id="display-name" class="profile-value"></span>!</h2>
+  	    <p>Email: <span id="profile-email" class="profile-value"></span></p>
+  	    <p>Below is a list of all your polls, with links to each one!</p>
+  	    <div class="collection" id="userpolls">
+  	      <% for (var i =0; i < polls.length; i++) { %>
+  	        <a href='../poll/<%= polls[i].url %>' class="collection-item green-text"><%= polls[i].name %></a>
+          <% } %>
+        </div>
+  	  </div>
   	</main>
-  	 <footer class="white red-text footer-copyright center">
+  	<footer class="white red-text footer-copyright center">
       Made by <a href="http://www.hamishivison.com">Hamish Ivison</a>
-        </footer>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
-      <script type="text/javascript" src="public/js/materialize.min.js"></script>
-      <script type="text/javascript" src="public/js/main.js"></script>
-      <script type="text/javascript" src="common/ajax-functions.js"></script>
-        <script type="text/javascript" src="controllers/userController.client.js"></script>
-  	</body>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="public/js/materialize.min.js"></script>
+    <script type="text/javascript" src="public/js/main.js"></script>
+    <script type="text/javascript" src="common/ajax-functions.js"></script>
+    <script type="text/javascript" src="controllers/userController.client.js"></script>
+  </body>
 </html>

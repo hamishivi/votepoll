@@ -9,7 +9,7 @@ var User = new Schema({
         displayName: String,
         email: String,
     },
-   polls: []
+    polls: []
 });
 
 module.exports = mongoose.model('User', User);

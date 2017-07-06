@@ -1,5 +1,5 @@
- $(document).ready(function() {
-      $(".button-collapse").sideNav();
+$(document).ready(function() {
+    $(".button-collapse").sideNav();
     $('select').material_select();
     toggleFields();
     $("#vote").change(function () {
@@ -23,5 +23,4 @@ $("#voter").click(function() {
      curVote = $( "#vote option:selected" ).text().replace(/\r/g, "");
     } 
     window.location.href = 'https://votepolling.herokuapp.com/addvote?url=' + $("#hash").text() + "&vote=" + curVote;
-
 });

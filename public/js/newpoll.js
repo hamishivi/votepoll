@@ -3,8 +3,6 @@ $('#create').click( function() {
     $.get( 'https://votepolling.herokuapp.com/createpoll', $('form').serialize(), function(data) {
        window.location.href = 'https://votepolling.herokuapp.com/poll/' + name.hashCode();
     });
-    //redirect after created poll
-    //window.location = "http://www.yoururl.com";
 });
 
 String.prototype.hashCode = function() {
