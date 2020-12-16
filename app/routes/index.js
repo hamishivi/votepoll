@@ -166,8 +166,8 @@ module.exports = function (app, passport) {
     });
 
     // All the auth stuff
-    app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-    
+    app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/userinfo.email'] }));
     app.route('/auth/google/callback')
     .get(passport.authenticate('google', {
         successRedirect: '/',
