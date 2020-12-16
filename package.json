@@ -14,7 +14,7 @@
     "mongoose": ">=5.7.5",
     "passport": "^0.3.2",
     "passport-google": "^0.3.0",
-    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth": "^2.0.0",
     "passport-google-oauth2": "^0.1.6"
   },
   "devDependencies": {},
